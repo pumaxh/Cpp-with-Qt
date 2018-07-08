@@ -27,6 +27,7 @@ protected:
     Rank max(Rank lo, Rank mi, Rank hi);//选取最大元素
     void selectionSort(Rank lo, Rank hi);//选择排序
     void merge(Rank lo, Rank mi, Rank hi);//归并算法
+    void merge_D(Rank lo, Rank mi, Rank hi);//归并算法, 分步进行
     void mergeSort(Rank lo, Rank hi);   //归并排序算法
     Rank partition(Rank lo, Rank hi);   //轴点构造算法
     void quickSort(Rank lo, Rank hi);   //快速排序算法
@@ -116,5 +117,23 @@ public:
 
     Rank search(T const& e, Rank lo, Rank hi) const;
 };
+
+class Bitmap{
+    private:
+        unsigned int Map = 0;
+
+    public:
+        void set(int i);
+        void clear(int i);
+        bool check(int i);
+};
+
+// List ADT
+
+
+
+
+
+
 
 #endif // DATA_STRUCTURE_H

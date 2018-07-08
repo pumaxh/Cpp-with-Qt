@@ -272,7 +272,8 @@ template <typename T> void Vector<T>::mergeSort(Rank lo, Rank hi)
     int mi = (lo + hi) >> 1;
     mergeSort(lo, mi);
     mergeSort(mi, hi);
-    merge(lo, mi, hi);
+    if(_elem[mi - 1] > _elem[mi])
+        merge(lo, mi, hi);
 }
 
 template <typename T> void Vector<T>::merge(Rank lo, Rank mi, Rank hi) //各自有序的子向量[lo, mi)和[mi, hi)
@@ -290,27 +291,60 @@ template <typename T> void Vector<T>::merge(Rank lo, Rank mi, Rank hi) //各自�
         if((k < lc) && (!(j < lb) || (C[k] < B[j])))
             A[i++] = C[k++];
     }
-//    i = 0;
-//    j = 0;
-//    k = 0;
-//    while(j < lb || k < lc)
-//    {
-//        if(j < lb && k < lc)
-//        {
-//            if(B[j] <= C[k])
-//                A[i++] = B[j++];
-//            else
-//                A[i++] = C[k++];
-//        }
-//        else if(j < lb)
-//            A[i++] = B[j++];
-//        else
-//            A[i++] = C[k++];
-//    }
     delete [] B;
 }
 
+template <typename T> void Vector<T>::merge_D(Rank lo, Rank mi, Rank hi) //各自有序的子向量[lo, mi)和[mi, hi)
+{
+    Rank i, j, k;
 
+    T *A = _elem + lo;
+    int lb = mi - lo;
+    T *B = new T[lb];
+    for(Rank i = 0; i < lb; i++)
+        B[i] = A[i];
+    int lc = hi - mi;
+    T *C = _elem + mi;
+// lb， lc均未填完
+    for(Rank i = 0, j = 0, k = 0; (j < lb) && (k < lc);)
+    {
+        if((j < lb) && (!(k < lc) || (B[j] <= C[k])))
+            A[i++] = B[j++];
+        if((k < lc) && (!(j < lb) || (C[k] < B[j])))
+            A[i++] = C[k++];
+    }
+// 填完了一个数组后，直接拷贝另一个
+    if(j == lb)
+    {
+        while(k < lc)
+        {
+            A[i++] = C[k++];
+        }
+    }
+    else // k == lc
+    {
+        while(j < lb)
+        {
+            A[i++] = B[j++];
+        }
+    }
+    delete [] B;
+}
+
+void Bitmap::set(int i)
+{
+    Map |= (0x01 << i);
+}
+
+void Bitmap::clear(int i)
+{
+    Map &= ~(0x01 << i);
+}
+
+bool Bitmap::check(int i)
+{
+    return (Map & (0x01 << i));
+}
 
 
 

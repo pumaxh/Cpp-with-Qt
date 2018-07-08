@@ -81,7 +81,15 @@ void bubble_sort_4(int A[], int array_len)
 
 int main()
 {
-    std::cout << fibI(5) << std::endl;
-    std::cout << fibI(10) << std::endl;
+    Bitmap *bitmap = new Bitmap();
+    bitmap->set(10);
+    bitmap->set(20);
+    std::cout << "The " << 10 << " bit is" << bitmap->check(10) << std::endl;
+    std::cout << "The " << 20 << " bit is" << bitmap->check(20) << std::endl;
+
+    bitmap->clear(10);
+
+    std::cout << "The " << 10 << " bit is" << bitmap->check(10) << std::endl;
+    std::cout << "The " << 20 << " bit is" << bitmap->check(20) << std::endl;
     return 0;
 }
