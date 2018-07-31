@@ -1,6 +1,8 @@
 #ifndef DATA_STRUCTURE_H
 #define DATA_STRUCTURE_H
 
+#include "list.h"
+
 int64_t fibI (int n);
 
 // vector ADT

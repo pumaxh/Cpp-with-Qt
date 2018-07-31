@@ -1,5 +1,6 @@
 #include <iostream>
 #include <stdio.h>
+#include <cstring>
 #include <time.h>
 
 #include "data_structure.h"
@@ -81,15 +82,19 @@ void bubble_sort_4(int A[], int array_len)
 
 int main()
 {
-    Bitmap *bitmap = new Bitmap();
-    bitmap->set(10);
-    bitmap->set(20);
-    std::cout << "The " << 10 << " bit is" << bitmap->check(10) << std::endl;
-    std::cout << "The " << 20 << " bit is" << bitmap->check(20) << std::endl;
+//    Bitmap *bitmap = new Bitmap();
+//    bitmap->set(10);
+//    bitmap->set(20);
+    char a[50];
+    memset(a, 0xcc, 50);
+    std::cout << a << std::endl;
+//    std::cout << "The " << 20 << " bit is " << bitmap->check(20) << std::endl;
 
-    bitmap->clear(10);
+//    bitmap->clear(10);
 
-    std::cout << "The " << 10 << " bit is" << bitmap->check(10) << std::endl;
-    std::cout << "The " << 20 << " bit is" << bitmap->check(20) << std::endl;
+//    std::cout << "The " << 10 << " bit is " << bitmap->check(10) << std::endl;
+//    std::cout << "The " << 20 << " bit is " << bitmap->check(20) << std::endl;
+
+//    delete bitmap;
     return 0;
 }
